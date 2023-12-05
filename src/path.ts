@@ -1,4 +1,4 @@
-const path = {
+const paths = {
   home() {
     return "/";
   },
@@ -13,4 +13,4 @@ const path = {
   },
 };
 
-export default path;
+export default paths;
