@@ -11,6 +11,32 @@ export type PostWithData = Post & {
   ReturnType<typeof fetchPostsByTopicSlug>
 >[number];  otomatik olarak ne return ederse onun typenı alıyor */
 
+export const fetchPostsBySearchTerm = async (
+  term: string
+): Promise<PostWithData[]> => {
+  return await db.post.findMany({
+    include: {
+      topic: { select: { slug: true } },
+      user: { select: { name: true, image: true } },
+      _count: { select: { comments: true } },
+    },
+    where: {
+      OR: [
+        {
+          title: {
+            contains: term,
+          },
+        },
+        {
+          content: {
+            contains: term,
+          },
+        },
+      ],
+    },
+  });
+};
+
 export const fetchPostsByTopicSlug = async (
   slug: string
 ): Promise<PostWithData[]> => {
