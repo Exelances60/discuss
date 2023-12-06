@@ -47,7 +47,6 @@ export const createTopic = async (
       },
     };
   }
-
   let topic: Topic;
   try {
     topic = await db.topic.create({
