@@ -4,7 +4,7 @@ import type { NextRequest } from "next/server";
 export async function middleware(request: NextRequest) {
   const cookies = request.cookies.get("authjs.session-token");
   if (!cookies || !cookies.value) {
-    return NextResponse.redirect(new URL("/", request.url));
+    return NextResponse.redirect(new URL("/isLogin", request.url));
   }
 }
 
