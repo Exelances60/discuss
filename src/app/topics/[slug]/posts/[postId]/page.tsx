@@ -24,8 +24,12 @@ export default async function PostShowPage({ params }: PostShowPageProps) {
       <Suspense fallback={<PostShowLoading />}>
         <PostShow postId={postId} />
       </Suspense>
-      <CommentCreateForm postId={postId} startOpen />
-      <CommentList postId={postId} />
+      <Suspense fallback={<PostShowLoading />}>
+        <CommentCreateForm postId={postId} startOpen />
+      </Suspense>
+      <Suspense fallback={<PostShowLoading />}>
+        <CommentList postId={postId} />
+      </Suspense>
     </div>
   );
 }

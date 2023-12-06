@@ -1,6 +1,5 @@
 import PostCreateForm from "@/components/posts/post-create-form";
 import PostList from "@/components/posts/post-list";
-import { db } from "@/db";
 import { fetchPostsByTopicSlug } from "@/db/queries/post";
 import React from "react";
 

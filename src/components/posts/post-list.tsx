@@ -2,6 +2,8 @@ import type { Post, User, Topic } from "@prisma/client";
 import Link from "next/link";
 import paths from "@/path";
 import { PostWithData } from "@/db/queries/post";
+import { Suspense } from "react";
+import PostShowLoading from "./post-show-loading";
 
 interface PostListProps {
   fetchData: () => Promise<PostWithData[]>;
@@ -31,5 +33,11 @@ export default async function PostList({ fetchData }: PostListProps) {
     );
   });
 
-  return <div className="space-y-2">{renderedPosts}</div>;
+  return (
+    <>
+      <Suspense fallback={<PostShowLoading />}>
+        <div className="space-y-2">{renderedPosts}</div>
+      </Suspense>
+    </>
+  );
 }
