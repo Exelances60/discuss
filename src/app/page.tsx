@@ -1,5 +1,7 @@
+import PostList from "@/components/posts/post-list";
 import TopicsCreateForm from "@/components/topics/topics-create-form";
 import TopicList from "@/components/topics/topics-list";
+import { fetchTopPosts } from "@/db/queries/post";
 import { Divider } from "@nextui-org/react";
 
 export default async function Home() {
@@ -7,6 +9,7 @@ export default async function Home() {
     <div className="grid grid-cols-4 gap-4 p-4">
       <div className="col-span-3">
         <h1 className="text-3xl font-bold">Create Topic</h1>
+        <PostList fetchData={fetchTopPosts} />
       </div>
       <div className="border shadow py-3 px-2">
         <TopicsCreateForm />
